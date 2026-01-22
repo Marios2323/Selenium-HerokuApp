@@ -37,7 +37,7 @@ public class LoginTest {
 
         driver.findElement(By.name("username")).sendKeys("tomsmith");
         driver.findElement(By.name("password")).sendKeys("SuperSecretPassword!");
-        driver.findElement(By.xpath("//button[contains(text(),'Login')]")).click();
+        driver.findElement(By.xpath("//button[contains(.,'Login')]")).click();
 
         // ASSERT: Success message
         Assert.assertTrue(
@@ -46,6 +46,7 @@ public class LoginTest {
                         .getText().contains("You logged into a secure area!"),
                 "Login failed"
         );
+        Assert.assertTrue(driver.getCurrentUrl().contains("/secure"));
     }
 
     @AfterMethod
