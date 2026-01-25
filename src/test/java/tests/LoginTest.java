@@ -1,17 +1,23 @@
+package tests;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.LoginPage;
 
 import java.time.Duration;
 public class LoginTest {
 
+    private static final Logger log = LoggerFactory.getLogger(LoginTest.class);
     WebDriver driver;
     WebDriverWait wait;
 
@@ -25,9 +31,10 @@ public class LoginTest {
     @Test
     public void successfulLoginTest() {
 
+        LoginPage loginPage = new LoginPage(driver);
+
         driver.get("https://the-internet.herokuapp.com/login");
 
-        // ASSERT: Login page loaded
         Assert.assertTrue(
                 wait.until(ExpectedConditions
                                 .visibilityOfElementLocated(By.xpath("//h2[text()='Login Page']")))
@@ -35,11 +42,10 @@ public class LoginTest {
                 "Login Page is not visible"
         );
 
-        driver.findElement(By.name("username")).sendKeys("tomsmith");
-        driver.findElement(By.name("password")).sendKeys("SuperSecretPassword!");
-        driver.findElement(By.xpath("//button[contains(.,'Login')]")).click();
+        loginPage.typeUsername("tomsmith");
+        loginPage.typePassword("SuperSecretPassword!");
+        loginPage.pressLoginButton();
 
-        // ASSERT: Success message
         Assert.assertTrue(
                 wait.until(ExpectedConditions
                                 .visibilityOfElementLocated(By.id("flash")))
