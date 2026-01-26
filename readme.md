@@ -49,12 +49,12 @@ cd Selenium-HerokuApp
 ````
 2. Install dependencies with Maven:
 
-````
+``
 mvn clean install
-````
+``
 Run the tests:
 
-```mvn test```
+``mvn test``
 
 ## Page Object Model (POM)
 #### LoginPage.java encapsulates page interactions:
