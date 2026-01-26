@@ -47,12 +47,14 @@ test > java > tests >  LoginTest.java
 git clone https://github.com/Marios2323/Selenium-HerokuApp.git
 cd Selenium-HerokuApp
 ``
+
 2. Install dependencies with Maven:
 
 ``
 mvn clean install
 ``
-Run the tests:
+
+3. Run the tests:
 
 ``mvn test``
 
