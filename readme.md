@@ -43,10 +43,10 @@ test > java > tests >  LoginTest.java
 ## How to Run
 1. Clone the repository:
 
-````
+``
 git clone https://github.com/Marios2323/Selenium-HerokuApp.git
 cd Selenium-HerokuApp
-````
+``
 2. Install dependencies with Maven:
 
 ``
