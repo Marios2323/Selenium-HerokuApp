@@ -18,14 +18,17 @@ public class LoginPage {
     }
 
     public void typeUsername(String username) {
-        driver.findElement(this.username).sendKeys(username);
+        driver.findElement(this.username)
+                .sendKeys(username);
     };
 
     public void typePassword(String password) {
-        driver.findElement(this.password).sendKeys(password);
+        driver.findElement(this.password).
+                sendKeys(password);
     };
 
     public void pressLoginButton() {
-        driver.findElement(loginButton).click();
+        driver.findElement(loginButton)
+                .click();
     }
 }
