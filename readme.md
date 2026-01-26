@@ -30,7 +30,7 @@ src
          └── tests
              └── LoginTest.java     # Test class for login scenarios
 
-##Technologies
+## Technologies
 
 * Java 17+
 
@@ -42,7 +42,7 @@ src
 
 * Maven (pom.xml)
 
-##How to Run
+## How to Run
 1. Clone the repository:
 git clone https://github.com/Marios2323/Selenium-HerokuApp.git
 cd Selenium-HerokuApp
@@ -57,8 +57,8 @@ Run the tests:
 
 ```mvn test```
 
-##Page Object Model (POM)
-###LoginPage.java### encapsulates page interactions:
+## Page Object Model (POM)
+#### LoginPage.java encapsulates page interactions:
 
 * Locators for username, password, and login button
 
@@ -70,7 +70,7 @@ Run the tests:
 
 * pressLoginButton() – clicks the login button
 
-###LoginTest.java:
+### LoginTest.java:
 
 * Initializes the WebDriver
 
@@ -80,12 +80,12 @@ Run the tests:
 
 Note: The Page Object only handles interactions; assertions remain in the test class.
 
-##Contributing
+## Contributing
 1. Fork the repository
 2. Create a new branch: git checkout -b feature/new-test
 3. Commit your changes: git commit -m "Add new test"
 4. Push to your branch: git push origin feature/new-test
 5. Open a Pull Request
 
-##License
+## License
 This project is licensed under the ##MIT License.
