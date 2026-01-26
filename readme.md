@@ -21,14 +21,12 @@ The target page for automation is: [The Internet – Login Page](https://the-int
 ## Project Structure
 
 src
- ├── main
- │   └── java
- │       └── pages
- │           └── LoginPage.java      # Page Object class for login page
- └── test
-     └── java
-         └── tests
-             └── LoginTest.java     # Test class for login scenarios
+  main > java > pages > LoginPage.java      
+
+# Page Object class for login page
+test > java > tests >  LoginTest.java     
+
+# Test class for login scenarios
 
 ## Technologies
 
