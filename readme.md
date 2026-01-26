@@ -89,4 +89,4 @@ Note: The Page Object only handles interactions; assertions remain in the test c
 5. Open a Pull Request
 
 ## License
-This project is licensed under the ##MIT License.
+This project is licensed under the ## MIT License.
