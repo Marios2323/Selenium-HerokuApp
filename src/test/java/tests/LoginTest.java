@@ -31,11 +31,11 @@ public class LoginTest {
 
         loginPage.navigateToLoginPage();
 
-        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login was not successful");
-
         loginPage.typeUsername("tomsmith");
         loginPage.typePassword("SuperSecretPassword!");
         loginPage.pressLoginButton();
+
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login was not successful");
 
         Assert.assertTrue(loginPage.isLoginSecure(), "Page is not a secure page!");
     }
