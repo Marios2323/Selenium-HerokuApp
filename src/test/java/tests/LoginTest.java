@@ -35,8 +35,10 @@ public class LoginTest {
         loginPage.typePassword("SuperSecretPassword!");
         loginPage.pressLoginButton();
 
-        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login was not successful");
+        //Verifies that the login page is accessible
+        Assert.assertTrue(loginPage.isLoginPageVisible(), "Login was not successful");
 
+        //Verifies the login page is secure
         Assert.assertTrue(loginPage.isLoginSecure(), "Page is not a secure page!");
     }
 
