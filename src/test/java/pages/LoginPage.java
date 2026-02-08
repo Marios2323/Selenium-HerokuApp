@@ -54,4 +54,16 @@ public class LoginPage {
                         .visibilityOfElementLocated(By.id("flash")))
                 .getText().contains("You logged into a secure area!");
     }
+
+    public boolean isWrongUsernameMessageDisplayed() {
+        return wait.until(ExpectedConditions
+                        .visibilityOfElementLocated(By.id("flash")))
+                .getText().contains("Your username is invalid!");
+    }
+
+    public boolean isWrongPasswordMessageDisplayed() {
+        return wait.until(ExpectedConditions
+                        .visibilityOfElementLocated(By.id("flash")))
+                .getText().contains("Your password is invalid!");
+    }
 }
