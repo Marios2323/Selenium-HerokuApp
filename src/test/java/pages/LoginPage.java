@@ -30,20 +30,20 @@ public class LoginPage {
     public void typeUsername(String username) {
         driver.findElement(this.username)
                 .sendKeys(username);
-    };
+    }
 
     public void typePassword(String password) {
         driver.findElement(this.password).
                 sendKeys(password);
 
-    };
+    }
 
     public void pressLoginButton() {
         driver.findElement(loginButton)
                 .click();
     }
 
-    public boolean isLoginSuccessful() {
+    public boolean isLoginPageVisible() {
         return wait.until(ExpectedConditions
                         .visibilityOfElementLocated(By.id("content")))
                 .getText().contains("Login Page");
