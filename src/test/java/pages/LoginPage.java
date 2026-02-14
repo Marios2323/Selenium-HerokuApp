@@ -9,13 +9,14 @@ import java.time.Duration;
 
 
 public class LoginPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
+    private static final By FLASH_MESSAGE = By.id("flash");
 
     //Happy path
-    private By username = By.name("username");
-    private By password = By.name("password");
-    private By loginButton = By.xpath("//button[contains(.,'Login')]");
+    private final By username = By.name("username");
+    private final By password = By.name("password");
+    private final By loginButton = By.xpath("//button[contains(.,'Login')]");
 
     //Constructor is manadotory inside POM
     public LoginPage(WebDriver driver) {
