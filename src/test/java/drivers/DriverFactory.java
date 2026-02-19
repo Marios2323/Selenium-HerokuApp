@@ -7,27 +7,37 @@ import org.openqa.selenium.WebDriver;
 
 public class DriverFactory {
 
-    public static WebDriver createDriver(String browser) {
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-        WebDriver driver;
+    public static void initDriver(String browser) {
 
-        //Selecting the driver for the tests
+        WebDriver webDriver;
+
         switch (browser.toLowerCase()) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                webDriver = new ChromeDriver();
                 break;
 
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
+                webDriver = new FirefoxDriver();
                 break;
 
             default:
                 throw new IllegalArgumentException("Browser not supported: " + browser);
         }
 
-        driver.manage().window().maximize();
-        return driver;
+        webDriver.manage().window().maximize();
+        driver.set(webDriver);
+    }
+
+    public static WebDriver getDriver() {
+        return driver.get();
+    }
+
+    public static void quitDriver() {
+        driver.get().quit();
+        driver.remove();
     }
 }

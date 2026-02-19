@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import drivers.DriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -9,7 +10,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void successfulLoginTest() {
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
 
         loginPage.navigateToLoginPage();
 
@@ -27,7 +28,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void wrongUsernameTest() {
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
 
         loginPage.navigateToLoginPage();
 
@@ -45,7 +46,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void wrongPasswordTest() {
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
 
         loginPage.navigateToLoginPage();
 
