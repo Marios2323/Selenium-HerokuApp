@@ -17,41 +17,34 @@ public class DriverFactory {
         WebDriver webDriver;
 
         switch (browser.toLowerCase()) {
-            case "chrome": {
-                WebDriverManager.chromedriver().setup(); // κατεβάζει driver τοπικά
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("--headless=new");
-                options.addArguments("--no-sandbox");
-                options.addArguments("--disable-dev-shm-usage");
-                webDriver = new ChromeDriver(options);
+            case "chrome":
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless=new");
+                chromeOptions.addArguments("--no-sandbox");
+                chromeOptions.addArguments("--disable-dev-shm-usage");
+                webDriver = new ChromeDriver(chromeOptions);
                 break;
-            }
 
-            case "firefox": {
-                WebDriverManager.firefoxdriver().setup(); // κατεβάζει driver τοπικά
-                FirefoxOptions options = new FirefoxOptions();
-                options.addArguments("--headless");
-                webDriver = new FirefoxDriver(options);
+            case "firefox":
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.addArguments("--headless");
+                webDriver = new FirefoxDriver(firefoxOptions);
                 break;
-            }
 
-            case "edge": {
-                // Edge δεν υποστηρίζεται στο GitHub Actions (Ubuntu runner)
-                // Αν είσαι local Windows, βάζεις τον driver
+            case "edge":
                 if (System.getProperty("os.name").toLowerCase().contains("windows")) {
                     System.setProperty("webdriver.edge.driver", "EdgeDrivers/msedgedriver.exe");
-                    EdgeOptions options = new EdgeOptions();
-                    options.addArguments("--headless=new");
-                    options.addArguments("--no-sandbox");
-                    options.addArguments("--disable-dev-shm-usage");
-                    webDriver = new EdgeDriver(options);
+                    EdgeOptions edgeOptions = new EdgeOptions();
+                    edgeOptions.addArguments("--headless=new");
+                    edgeOptions.addArguments("--no-sandbox");
+                    edgeOptions.addArguments("--disable-dev-shm-usage");
+                    webDriver = new EdgeDriver(edgeOptions);
                 } else {
                     throw new IllegalStateException(
                             "Edge not supported on non-Windows CI environments. Use Chrome/Firefox headless."
                     );
                 }
                 break;
-            }
 
             default:
                 throw new IllegalArgumentException("Browser not supported: " + browser);
