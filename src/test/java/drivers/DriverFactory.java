@@ -39,12 +39,12 @@ public class DriverFactory {
             }
 
             case "edge": {
-//                System.setProperty("webdriver.edge.driver",
-//                        "C:\\Users\\Michael\\IdeaProjects\\Selenium-HerokuApp\\EdgeDrivers\\msedgedriver.exe");
-//                webDriver = new EdgeDriver();
-                WebDriverManager.edgedriver().setup();
+                System.setProperty("webdriver.edge.driver",
+                        "EdgeDrivers/msedgedriver.exe");
                 EdgeOptions options = new EdgeOptions();
                 options.addArguments("--headless=new");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
                 webDriver = new EdgeDriver(options);
                 break;
             }
