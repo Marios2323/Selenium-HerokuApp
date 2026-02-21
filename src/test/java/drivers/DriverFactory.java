@@ -2,9 +2,12 @@ package drivers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverFactory {
 
@@ -15,22 +18,36 @@ public class DriverFactory {
         WebDriver webDriver;
 
         switch (browser.toLowerCase()) {
-            case "chrome":
-                WebDriverManager.chromedriver().setup();
-                webDriver = new ChromeDriver();
+            case "chrome": {
+//                WebDriverManager.chromedriver().setup();
+//                webDriver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless=new");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                webDriver = new ChromeDriver(options);
                 break;
+            }
 
-            case "firefox":
-                WebDriverManager.firefoxdriver().setup();
-                webDriver = new FirefoxDriver();
+            case "firefox": {
+//                WebDriverManager.firefoxdriver().setup();
+//                webDriver = new FirefoxDriver();
+                FirefoxOptions options = new FirefoxOptions();
+                options.addArguments("--headless");
+                webDriver = new FirefoxDriver(options);
                 break;
+            }
 
-            case "edge":
-                System.setProperty("webdriver.edge.driver",
-                        "C:\\Users\\Michael\\IdeaProjects\\Selenium-HerokuApp\\EdgeDrivers\\msedgedriver.exe");
-
-                webDriver = new EdgeDriver();
+            case "edge": {
+//                System.setProperty("webdriver.edge.driver",
+//                        "C:\\Users\\Michael\\IdeaProjects\\Selenium-HerokuApp\\EdgeDrivers\\msedgedriver.exe");
+//                webDriver = new EdgeDriver();
+                WebDriverManager.edgedriver().setup();
+                EdgeOptions options = new EdgeOptions();
+                options.addArguments("--headless=new");
+                webDriver = new EdgeDriver(options);
                 break;
+            }
 
             default:
                 throw new IllegalArgumentException("Browser not supported: " + browser);
