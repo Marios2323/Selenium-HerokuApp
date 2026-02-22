@@ -20,8 +20,11 @@ The target page for automation is: [The Internet – Login Page](https://the-int
 
 ## Project Structure
 
-src
-  main > java > pages > LoginPage.java      
+```
+src/main/java/pages/LoginPage.java      # Page Object class for login page
+src/test/java/tests/LoginTest.java      # Test class for login scenarios
+EdgeDrivers/msedgedriver.exe            # Edge WebDriver for Windows (local only)
+```
 
 # Page Object class for login page
 test > java > tests >  LoginTest.java     
@@ -57,6 +60,17 @@ mvn clean install
 3. Run the tests:
 
 ``mvn test``
+
+**Run tests on a specific browser:**
+
+``
+mvn test -Dbrowser=chrome
+``
+
+**Notes:**
+
+- Supported browsers: chrome, firefox, edge (Windows only)
+- Edge is not supported in CI environments. To run locally on Windows, use the Edge driver in the EdgeDrivers folder.
 
 ## Page Object Model (POM)
 #### LoginPage.java encapsulates page interactions:
